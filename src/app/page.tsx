@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 'use client'
 
 import Section1 from '@/Components/Sections/Section1'
@@ -6,14 +7,14 @@ import { useRef, useState } from 'react'
 import Section2 from '@/Components/Sections/Section2'
 import Section3 from '@/Components/Sections/Section3'
 import Footer from '@/Components/Footer/Footer'
-import GoTop from '@/Components/Animation/Gotop'
+import GoTop from '@/Components/Animation/GoTop'
 import { useScroll } from '@/utils/Hooks/useScroll'
 import useIntersect from '@/utils/Hooks/useIntersect'
 import Section4 from '@/Components/Sections/Section4'
 import Section5 from '@/Components/Sections/Section5'
 
 export default function Home() {
-  const [currentScroll, setCurrentScroll] = useState<'Home' | ''>('Home')
+  const [currentScroll, setCurrentScroll] = useState<string>('Home')
   console.log(currentScroll)
   const [isHeaderShadow, setIsHeaderShadow] = useState(false)
 
@@ -41,7 +42,6 @@ export default function Home() {
       targetRefs.push(ref)
     }
   }
-  console.log(isIntersecting)
 
   return (
     <main
@@ -49,9 +49,16 @@ export default function Home() {
       // onScroll={handleScroll}
       className="flex min-h-screen flex-col items-center justify-between p-24"
     >
-      <Header isHeaderShadow={isHeaderShadow}></Header>
+      <Header
+        setCurrentScroll={setCurrentScroll}
+        isHeaderShadow={isHeaderShadow}
+      ></Header>
       <Section1 ref={handleRef} />
-      <Section2 ref={handleRef} children={<GoTop></GoTop>} />
+      <Section2
+        ref={handleRef}
+        // eslint-disable-next-line react/no-children-prop
+        children={<GoTop isAnimationVisible={false} />}
+      />
       <Section3 ref={handleRef} />
       <Section4 ref={handleRef} />
       <Section5 ref={handleRef} />
