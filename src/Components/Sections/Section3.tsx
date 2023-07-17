@@ -20,7 +20,7 @@ const Section3 = ({ ref }: Section3Props) => {
           </div>
         ))}
       </div>
-      <Highlighter className={' absolute top-0 right-[-20px]'}>
+      <Highlighter className={'absolute top-0 right-[-20px]'}>
         Work
       </Highlighter>
     </div>
