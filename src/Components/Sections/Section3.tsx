@@ -11,7 +11,7 @@ interface Section3Props {
 
 const Section3 = ({ ref }: Section3Props) => {
   return (
-    <div ref={ref} className=" relative pt-[10.5rem]">
+    <div ref={ref} className="relative pt-[10.5rem]">
       <div>
         {WORK.map((work, index: number) => (
           <div key={index}>
